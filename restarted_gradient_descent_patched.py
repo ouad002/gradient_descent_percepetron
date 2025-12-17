@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from gradient_descent import gradient_descent
+from gradient_descent_patched import gradient_descent
 
 def restarted_gradient_descent(
     func: object,
