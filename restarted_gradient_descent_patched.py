@@ -1,8 +1,8 @@
 import math
 import numpy as np
-from gradient_descent_patched import gradient_descent
+from gradient_descent_patched import gradient_descent_patched
 
-def restarted_gradient_descent(
+def restarted_gradient_descent_patched(
     func: object,
     start_x: np.ndarray = np.empty(0,),
     LB: np.ndarray = None,
@@ -45,7 +45,7 @@ def restarted_gradient_descent(
             one_start_x = np.random.uniform(low=LB, high=UB)
 
         # do one search
-        res = gradient_descent(func=func,
+        res = gradient_descent_patched(func=func,
                 start_x=one_start_x,
                 LB=LB, UB=UB,
                 budget=one_budget,
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     # res = random_opt(func=fun, LB=LB, UB=UB, budget=budget, printlevel=printlevel,
     # step_decay_type=step_decay_type,
     # step_decay_rate=step_decay_rate)
-    res = restarted_gradient_descent(func=fun, start_x=start_x, LB=LB, UB=UB, budget=total_budget,
+    res = restarted_gradient_descent_patched(func=fun, start_x=start_x, LB=LB, UB=UB, budget=total_budget,
                            nb_restarts=nb_restarts,step_factor=0.1, direction_type="momentum",
                            do_linesearch=True, min_step_size=1e-11,
                            min_grad_size=1e-6, inertia=0.9, printlevel=printlevel,

@@ -184,7 +184,7 @@ def linesearch(
 
 
 ############### gradient based searches
-def gradient_descent(
+def gradient_descent_patched(
     func: Callable,
     start_x: np.ndarray,
     LB: np.ndarray,
@@ -452,7 +452,7 @@ if __name__ == "__main__":
     #########################
     # optimize
     # res = random_opt(func=fun, LB=LB, UB=UB, budget=budget, printlevel=printlevel)
-    res = gradient_descent(func=fun, start_x=start_x, LB=LB, UB=UB, budget=budget,
+    res = gradient_descent_patched(func=fun, start_x=start_x, LB=LB, UB=UB, budget=budget,
                            step_factor=0.0001, direction_type="momentum",
                            do_linesearch=False, min_step_size=1e-11,
                            min_grad_size=1e-6, inertia=0.9, printlevel=printlevel,
